@@ -23,11 +23,18 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   const ip = req.ip || req.connection.remoteAddress;
   console.log("Ip="+ip);
-  const { limit, reset, remaining } = await ratelimit.limit("toto")
-  console.log("Toto Remaining "+remaining)
-  res.json({
-    message: 'API - 👋🌎🌍🌏',
-  });
+  const { success, limit, reset, remaining } = await ratelimit.limit(ip)
+  console.log("Ip success "+success)
+  if (remaining){
+    res.json({
+      message: 'API - 👋🌎🌍🌏',
+    });
+  }
+  else {
+    res.status(429).json({
+      message: "Too many requests, please try again later."
+    });
+  }
 });
 
 router.use('/emojis', emojis);
