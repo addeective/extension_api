@@ -1,9 +1,11 @@
-const express = require('express');
+
+import express from 'express';
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
+  console.log("emojis")
   res.json(['😀', '😳', '🙄']);
 });
 
-module.exports = router;
+export default router;
