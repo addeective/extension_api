@@ -8,7 +8,7 @@
     "dev": "PORT=3002 nodemon src/index.js",
     "lint": "eslint --fix src",
     "test": "jest",
-    "vercel-build":"echo noop build (no need for a build"
+    "vercel-build":"echo noop build"
   },
   "keywords": [],
   "author": "CJ R. <cj@null.computer> (https://w3cj.now.sh)",
